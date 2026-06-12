@@ -1,0 +1,34 @@
+[package]
+name = "activity_daemon"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Web server + WebSocket
+warp = "0.3"
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+futures-util = "0.3"
+chrono = { version = "0.4", features = ["serde"] }
+ 
+# X11 helper for window collection
+x11rb = "0.10"
+ 
+# SQLite storage for events and snapshots
+rusqlite = { version = "0.29", features = ["bundled"] }
+
+# Clipboard polling
+arboard = { version = "3", default-features = false }
+
+# Filesystem watching
+notify = "6"
+
+# HTTP client for the Claude API (recommendation engine)
+reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls"] }
+
+# Loads ANTHROPIC_API_KEY / ANTHROPIC_MODEL from a .env file, if present
+dotenvy = "0.15"
